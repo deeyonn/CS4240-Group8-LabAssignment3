@@ -59,6 +59,6 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
-        Instantiate(placementIndicator, PlacementPose.position, PlacementPose.rotation);
+        Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
     }
 }
