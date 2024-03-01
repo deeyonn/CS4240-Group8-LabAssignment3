@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 9058367}
   - component: {fileID: 9058366}
   - component: {fileID: 9058369}
+  - component: {fileID: 9058370}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -219,7 +220,19 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9058370}
+        m_TargetAssemblyTypeName: GetValueFromDropdown, Assembly-CSharp
+        m_MethodName: GetDropdownValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &9058367
 MonoBehaviour:
@@ -272,7 +285,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 9058366}
-  folderName: BigFurniturePack
+  options:
+  - m_Text: Bathroom
+    m_Image: {fileID: 0}
+  - m_Text: Beds
+    m_Image: {fileID: 0}
+  - m_Text: Cabinets & Racks
+    m_Image: {fileID: 0}
+  - m_Text: Lights
+    m_Image: {fileID: 0}
+  - m_Text: Mirrors
+    m_Image: {fileID: 0}
+  - m_Text: Modular Kitchen
+    m_Image: {fileID: 0}
+  - m_Text: Sofas & Chairs
+    m_Image: {fileID: 0}
+  - m_Text: Tables
+    m_Image: {fileID: 0}
+  - m_Text: Vases
+    m_Image: {fileID: 0}
+--- !u!114 &9058370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5ba20105a251b48a855cffd672af66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 9058366}
 --- !u!1 &212878512
 GameObject:
   m_ObjectHideFlags: 0

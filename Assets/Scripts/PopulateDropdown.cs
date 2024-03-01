@@ -1,31 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PopulateDropdown : MonoBehaviour
 {
-    public TMPro.TMP_Dropdown dropdown;
+    [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private List<TMP_Dropdown.OptionData> options = new();
 
-    void Start()
-    {
-        Populate();
-    }
-
-    public void Populate()
+    private void Start()
     {
         dropdown.ClearOptions();
-        List<string> options = new List<string>
-        {
-            "Bathroom",
-            "Beds",
-            "Cabinets & Racks",
-            "Lights",
-            "Mirrors",
-            "Modular Kitchen",
-            "Sofas & Chairs",
-            "Tables",
-            "Vases"
-        };
         dropdown.AddOptions(options);
+        dropdown.RefreshShownValue();
     }
 }
