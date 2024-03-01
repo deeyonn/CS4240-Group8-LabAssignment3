@@ -14,16 +14,18 @@ public class PopulateDropdown : MonoBehaviour
     public void Populate()
     {
         dropdown.ClearOptions();
-        List<string> options = new List<string>();
-        options.Add("Bathroom");
-        options.Add("Beds");
-        options.Add("Cabinets & Racks");
-        options.Add("Lights");
-        options.Add("Mirrors");
-        options.Add("Modular Kitchen");
-        options.Add("Sofas & Chairs");
-        options.Add("Tables");
-        options.Add("Vases");
+        List<string> options = new List<string>
+        {
+            "Bathroom",
+            "Beds",
+            "Cabinets & Racks",
+            "Lights",
+            "Mirrors",
+            "Modular Kitchen",
+            "Sofas & Chairs",
+            "Tables",
+            "Vases"
+        };
         dropdown.AddOptions(options);
     }
 }
