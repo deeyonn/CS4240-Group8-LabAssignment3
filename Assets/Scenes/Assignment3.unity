@@ -559,9 +559,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b50ad3f5d9024549b0a549c5a03a084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Session: {fileID: 0}
-  SessionOrigin: {fileID: 0}
-  CameraManager: {fileID: 0}
+  Session: {fileID: 674908039}
+  SessionOrigin: {fileID: 2083316627}
+  CameraManager: {fileID: 908992035}
   ARCoreExtensionsConfig: {fileID: 0}
   CameraConfigFilter: {fileID: 0}
 --- !u!4 &1479792388
