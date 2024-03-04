@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -27,7 +28,9 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            PlaceObject();
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && objectToPlace != null) {
+                PlaceObject();
+            }
         }
     }
 
@@ -59,6 +62,10 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
-        Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+        Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation * objectToPlace.transform.rotation);
+    }
+
+    public void ChangePrefab(GameObject gameObject) {
+        objectToPlace = gameObject;
     }
 }
