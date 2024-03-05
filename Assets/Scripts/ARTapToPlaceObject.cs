@@ -28,8 +28,10 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && objectToPlace != null) {
-                PlaceObject();
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && objectToPlace != null) {    
+                if (CheckCollider()) {
+                    PlaceObject();
+                }
             }
         }
     }
@@ -67,5 +69,25 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     public void ChangePrefab(GameObject gameObject) {
         objectToPlace = gameObject;
+    }
+
+    private bool CheckCollider(){
+        Collider objectCollider = objectToPlace.GetComponent<BoxCollider>();
+        if (objectCollider == null) {
+            Debug.LogError("Object does not have a BoxCollider component.");
+            return false;
+        }
+
+        Bounds objectBounds = objectCollider.bounds;
+
+        // Check for overlaps with other colliders in the scene.
+        Collider[] colliders = Physics.OverlapBox(objectBounds.center + PlacementPose.position, objectBounds.extents, objectToPlace.transform.rotation);
+
+        if (colliders.Length == 0) {
+            return true;
+        } else {
+            Debug.LogWarning("Cannot place object, it will collide.");
+            return false;
+        }
     }
 }
