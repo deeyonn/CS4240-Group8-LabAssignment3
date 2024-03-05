@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7192753208695739505}
   m_Layer: 0
   m_Name: kitchen_shelf_corner_INV
-  m_TagString: Untagged
+  m_TagString: Furniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

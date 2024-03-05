@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 250977910551325647}
   m_Layer: 0
   m_Name: rack_1
-  m_TagString: Untagged
+  m_TagString: Furniture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
