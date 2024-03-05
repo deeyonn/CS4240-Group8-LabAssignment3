@@ -6,7 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private GameObject placementIndicator;
 
     private Pose PlacementPose;
@@ -26,10 +26,19 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (
+            placementPoseIsValid
+            && Input.touchCount > 0
+            && Input.GetTouch(0).phase == TouchPhase.Began
+        )
         {
-            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId) && objectToPlace != null) {    
-                if (CheckCollider()) {
+            if (
+                !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)
+                && objectToPlace != null
+            )
+            {
+                if (CheckCollider())
+                {
                     PlaceObject();
                 }
             }
@@ -54,7 +63,10 @@ public class ARTapToPlaceObject : MonoBehaviour
         if (placementPoseIsValid)
         {
             placementIndicator.SetActive(true);
-            placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
+            placementIndicator.transform.SetPositionAndRotation(
+                PlacementPose.position,
+                PlacementPose.rotation
+            );
         }
         else
         {
@@ -64,16 +76,23 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private void PlaceObject()
     {
-        Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation * objectToPlace.transform.rotation);
+        Instantiate(
+            objectToPlace,
+            PlacementPose.position,
+            PlacementPose.rotation * objectToPlace.transform.rotation
+        );
     }
 
-    public void ChangePrefab(GameObject gameObject) {
+    public void ChangePrefab(GameObject gameObject)
+    {
         objectToPlace = gameObject;
     }
 
-    private bool CheckCollider(){
+    private bool CheckCollider()
+    {
         Collider objectCollider = objectToPlace.GetComponent<BoxCollider>();
-        if (objectCollider == null) {
+        if (objectCollider == null)
+        {
             Debug.LogError("Object does not have a BoxCollider component.");
             return false;
         }
@@ -81,13 +100,25 @@ public class ARTapToPlaceObject : MonoBehaviour
         Bounds objectBounds = objectCollider.bounds;
 
         // Check for overlaps with other colliders in the scene.
-        Collider[] colliders = Physics.OverlapBox(objectBounds.center + PlacementPose.position, objectBounds.extents, objectToPlace.transform.rotation);
+        Collider[] colliders = Physics.OverlapBox(
+            objectBounds.center + PlacementPose.position,
+            objectBounds.extents,
+            objectToPlace.transform.rotation
+        );
 
-        if (colliders.Length == 0) {
-            return true;
-        } else {
-            Debug.LogWarning("Cannot place object, it will collide.");
-            return false;
+        foreach (Collider collider in colliders)
+        {
+            // Check if the collided object has the tag "Furniture".
+            if (collider.CompareTag("Furniture"))
+            {
+                Debug.LogWarning("Cannot place object, it will collide.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
+        return true;
     }
 }
