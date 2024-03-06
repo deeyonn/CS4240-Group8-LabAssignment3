@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: base_material_2_holo
+  m_Name: base_material_1_holored
   m_Shader: {fileID: 4800000, guid: e62c7f6ee8b3c5e4f9c9f0ef484611be, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -36,5 +36,5 @@ Material:
     - _Scale: 3
     - _ScrollSpeedV: 1
     m_Colors:
-    - _Color: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

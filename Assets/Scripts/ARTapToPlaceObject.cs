@@ -9,9 +9,13 @@ public class ARTapToPlaceObject : MonoBehaviour
     [SerializeField]
     private GameObject placementIndicator;
 
+    private Material canPlace;
+    private Material cannotPlace;
+
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
+    private bool placeable = true;
 
     [SerializeField]
     private GameObject objectToPlace;
@@ -21,14 +25,19 @@ public class ARTapToPlaceObject : MonoBehaviour
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+        canPlace = (Material)Resources.Load<Material>("Hologreen");
+        cannotPlace = (Material)Resources.Load<Material>("Holored");
     }
 
     void Update()
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+
         if (CheckCollider())
         {
+            placeable = true;
+            UpdateHoloColour();
             if (
                 placementPoseIsValid
                 && Input.touchCount > 0
@@ -75,6 +84,16 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
     }
 
+    private void UpdateHoloColour() {
+        Transform child = placementIndicator.transform.GetChild(0);
+        if (child.GetComponent<MeshRenderer>() != null) {
+            child.GetComponent<MeshRenderer>().material = GetMaterial();
+        }
+        for (int i = 0; i < child.transform.childCount; i++) {
+            child.transform.GetChild(i).GetComponent<MeshRenderer>().material = GetMaterial();
+        }
+    }
+
     private void PlaceObject()
     {
         Instantiate(
@@ -89,6 +108,14 @@ public class ARTapToPlaceObject : MonoBehaviour
         objectToPlace = gameObject;
     }
 
+    public Material GetMaterial() {
+        if (placeable) {
+            return canPlace;
+        } else {
+            return cannotPlace;
+        }
+    }
+
     private bool CheckCollider()
     {
         Collider objectCollider = placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>();
@@ -98,6 +125,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
 
         Bounds objectBounds = objectCollider.bounds;
+        
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
@@ -112,6 +140,8 @@ public class ARTapToPlaceObject : MonoBehaviour
             // Check if the collided object has the tag "Furniture".
             if (collider.CompareTag("Furniture"))
             {
+                placeable = false;
+                UpdateHoloColour();
                 return false;
             }
         }
