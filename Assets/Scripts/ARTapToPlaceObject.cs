@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
@@ -34,7 +35,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (CheckCollider())
+        if (placementIndicator.transform.GetChild(0).tag == "Hologram" && CheckCollider())
         {
             placeable = true;
             UpdateHoloColour();
@@ -125,7 +126,6 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
 
         Bounds objectBounds = objectCollider.bounds;
-        
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
@@ -137,13 +137,9 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
-            // Check if the collided object has the tag "Furniture".
-            if (collider.CompareTag("Furniture"))
-            {
-                placeable = false;
-                UpdateHoloColour();
-                return false;
-            }
+            placeable = false;
+            UpdateHoloColour();
+            return false;
         }
         return true;
     }
