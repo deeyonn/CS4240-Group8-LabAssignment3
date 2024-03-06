@@ -90,6 +90,7 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private bool CheckCollider()
     {
+        Gizmos.color = Color.yellow;
         Collider objectCollider = objectToPlace.GetComponent<BoxCollider>();
         if (objectCollider == null)
         {
@@ -98,6 +99,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
 
         Bounds objectBounds = objectCollider.bounds;
+        Gizmos.DrawWireCube(objectBounds.center, objectBounds.size);
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
@@ -113,10 +115,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             {
                 Debug.LogWarning("Cannot place object, it will collide.");
                 return false;
-            }
-            else
-            {
-                return true;
             }
         }
         return true;
