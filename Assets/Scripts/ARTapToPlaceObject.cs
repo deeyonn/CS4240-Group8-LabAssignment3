@@ -25,19 +25,18 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
-
-        if (
-            placementPoseIsValid
-            && Input.touchCount > 0
-            && Input.GetTouch(0).phase == TouchPhase.Began
-        )
+        if (CheckCollider())
         {
             if (
-                !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)
-                && objectToPlace != null
+                placementPoseIsValid
+                && Input.touchCount > 0
+                && Input.GetTouch(0).phase == TouchPhase.Began
             )
             {
-                if (CheckCollider())
+                if (
+                    !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)
+                    && objectToPlace != null
+                )
                 {
                     PlaceObject();
                 }
@@ -90,16 +89,15 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private bool CheckCollider()
     {
-        Gizmos.color = Color.yellow;
         Collider objectCollider = objectToPlace.GetComponent<BoxCollider>();
         if (objectCollider == null)
         {
-            Debug.LogError("Object does not have a BoxCollider component.");
+            ToastNotification.PopUpMessage("Object does not have a BoxCollider component.");
             return false;
         }
 
         Bounds objectBounds = objectCollider.bounds;
-        Gizmos.DrawWireCube(objectBounds.center, objectBounds.size);
+        ToastNotification.PopUpMessage(objectBounds.ToString());
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
@@ -108,12 +106,14 @@ public class ARTapToPlaceObject : MonoBehaviour
             objectToPlace.transform.rotation
         );
 
+        ToastNotification.PopUpMessage(colliders.Length.ToString());
+
         foreach (Collider collider in colliders)
         {
             // Check if the collided object has the tag "Furniture".
             if (collider.CompareTag("Furniture"))
             {
-                Debug.LogWarning("Cannot place object, it will collide.");
+                ToastNotification.PopUpMessage("Cannot place object, it will collide.");
                 return false;
             }
         }
