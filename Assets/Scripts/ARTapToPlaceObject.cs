@@ -15,6 +15,8 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     [SerializeField]
     private GameObject objectToPlace;
+    [SerializeField]
+    private LayerMask layerMask;
 
     void Start()
     {
@@ -89,7 +91,7 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     private bool CheckCollider()
     {
-        Collider objectCollider = objectToPlace.GetComponent<BoxCollider>();
+        Collider objectCollider = placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>();
         if (objectCollider == null)
         {
             ToastNotification.PopUpMessage("Object does not have a BoxCollider component.");
@@ -101,12 +103,11 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
-            objectBounds.center + PlacementPose.position,
+            objectBounds.center,
             objectBounds.extents,
-            objectToPlace.transform.rotation
+            objectToPlace.transform.rotation,
+            layerMask
         );
-
-        ToastNotification.PopUpMessage(colliders.Length.ToString());
 
         foreach (Collider collider in colliders)
         {
