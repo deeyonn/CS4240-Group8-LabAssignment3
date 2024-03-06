@@ -923,7 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400022}
   - component: {fileID: 5848517855993538733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: washbasin
   m_TagString: Furniture
   m_Icon: {fileID: 0}

@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400004}
   - component: {fileID: 7045091893447905476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: table_2
   m_TagString: Furniture
   m_Icon: {fileID: 0}

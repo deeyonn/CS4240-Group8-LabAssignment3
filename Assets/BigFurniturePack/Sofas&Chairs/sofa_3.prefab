@@ -508,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400012}
   - component: {fileID: 8830228075576523516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sofa_3
   m_TagString: Furniture
   m_Icon: {fileID: 0}

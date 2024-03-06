@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400000}
   - component: {fileID: 7560763322758657847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: vase_2
   m_TagString: Furniture
   m_Icon: {fileID: 0}

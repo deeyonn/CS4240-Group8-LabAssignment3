@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400002}
   - component: {fileID: 7555090612377276876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: torchere_3
   m_TagString: Furniture
   m_Icon: {fileID: 0}

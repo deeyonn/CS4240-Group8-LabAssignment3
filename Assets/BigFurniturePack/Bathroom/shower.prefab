@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400010}
   - component: {fileID: 2111515273442207896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shower
   m_TagString: Furniture
   m_Icon: {fileID: 0}

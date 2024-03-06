@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400004}
   - component: {fileID: 5513380545914502781}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: toilet
   m_TagString: Furniture
   m_Icon: {fileID: 0}

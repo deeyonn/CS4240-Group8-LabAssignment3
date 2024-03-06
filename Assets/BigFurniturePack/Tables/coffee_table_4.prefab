@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 6702917996071818311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: coffee_table_4
   m_TagString: Furniture
   m_Icon: {fileID: 0}

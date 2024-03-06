@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400010}
   - component: {fileID: 5084798330352671349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tv_table_1
   m_TagString: Furniture
   m_Icon: {fileID: 0}

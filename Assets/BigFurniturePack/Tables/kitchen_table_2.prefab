@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400002}
   - component: {fileID: 3574935669218851211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kitchen_table_2
   m_TagString: Furniture
   m_Icon: {fileID: 0}

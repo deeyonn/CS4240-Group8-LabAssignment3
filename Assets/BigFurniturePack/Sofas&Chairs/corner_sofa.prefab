@@ -840,7 +840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400020}
   - component: {fileID: 8446279881455680155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: corner_sofa
   m_TagString: Furniture
   m_Icon: {fileID: 0}

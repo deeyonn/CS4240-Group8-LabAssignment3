@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400000}
   - component: {fileID: 2926674305294088854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mirror_1
   m_TagString: Furniture
   m_Icon: {fileID: 0}

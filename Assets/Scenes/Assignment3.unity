@@ -286,6 +286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementIndicator: {fileID: 1212914978}
   objectToPlace: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &253278738
 Transform:
   m_ObjectHideFlags: 0
@@ -1249,7 +1252,7 @@ PrefabInstance:
     - target: {fileID: 3038053132002560521, guid: 212347a19bf2cc6429a81e696c7059ca,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 386
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3038053132002560521, guid: 212347a19bf2cc6429a81e696c7059ca,
         type: 3}
