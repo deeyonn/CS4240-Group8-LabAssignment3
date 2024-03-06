@@ -94,12 +94,10 @@ public class ARTapToPlaceObject : MonoBehaviour
         Collider objectCollider = placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>();
         if (objectCollider == null)
         {
-            ToastNotification.PopUpMessage("Object does not have a BoxCollider component.");
             return false;
         }
 
         Bounds objectBounds = objectCollider.bounds;
-        ToastNotification.PopUpMessage(objectBounds.ToString());
 
         // Check for overlaps with other colliders in the scene.
         Collider[] colliders = Physics.OverlapBox(
@@ -114,7 +112,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             // Check if the collided object has the tag "Furniture".
             if (collider.CompareTag("Furniture"))
             {
-                ToastNotification.PopUpMessage("Cannot place object, it will collide.");
                 return false;
             }
         }
