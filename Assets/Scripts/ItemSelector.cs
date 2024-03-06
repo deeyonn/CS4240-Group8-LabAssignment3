@@ -10,6 +10,7 @@ public class ItemSelector : MonoBehaviour
     public GameObject placeObject;
 
     public void whenPressed() {
+        ToastNotification.PopUpMessage(prefab.name);
         placeObject.GetComponent<ARTapToPlaceObject>().ChangePrefab(prefab);
         Destroy(placementIndicator.transform.GetChild(0).gameObject);
         Instantiate(prefab_holo, placementIndicator.transform);
